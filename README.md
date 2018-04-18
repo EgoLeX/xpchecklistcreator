@@ -20,7 +20,8 @@ Checklist Creator for the Application XPChecklist. With this tool youre able to 
 
 :camera: **Pictures / Media**
 
-![xpccreator prod_pic1](https://i.imgur.com/obSs7CA.jpg)
+![xpccreator prod_pic1](https://i.imgur.com/AopnZFR.jpg)
+![xpccreator prod_pic2](https://i.imgur.com/TiBgCTR.jpg)
 
 
 
