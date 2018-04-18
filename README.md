@@ -6,6 +6,8 @@
 
 Checklist Creator for the Application XPChecklist. With this tool youre able to create your own checklist for the Application XPChecklist available on Android.
 
+:star: **Features**
+
 - Easy to use menu
 - fast creating of checklist
 - fully free and open source
