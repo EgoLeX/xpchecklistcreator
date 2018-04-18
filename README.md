@@ -16,3 +16,7 @@ Checklist Creator for the Application XPChecklist. With this tool youre able to 
 :exclamation: **Requirements**
 
 [Java 8 or higher](https://java.com/de/download/)
+
+:camera: **Pictures / Media**
+
+![xpccreator prod_pic1](https://i.imgur.com/obSs7CA.jpg)
