@@ -1,4 +1,4 @@
-# OmsiAS - Advanced Starter  || Version 1.1
+# XPChecklist Checklist Creator || Version 1.0
 
 > Created with :heart: in Germany :de:
 
