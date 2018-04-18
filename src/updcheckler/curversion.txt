@@ -1,1 +1,2 @@
-<version>1.0</version>
+# UpdateChecker is checking for the following version
+[version]1.0[/version]
