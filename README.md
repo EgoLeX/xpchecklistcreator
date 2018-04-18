@@ -15,7 +15,8 @@ Checklist Creator for the Application XPChecklist. With this tool youre able to 
 
 :exclamation: **Requirements**
 
-[Java 8 or higher](https://java.com/de/download/)
+- [Java 8 or higher](https://java.com/de/download/)
+- Windows XP, 7, 8, 10 || 32/64bit
 
 :camera: **Pictures / Media**
 
