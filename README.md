@@ -17,7 +17,7 @@ Checklist Creator for the Application XPChecklist. With this tool youre able to 
 
 - [Java 8 or higher](https://java.com/de/download/)
 - Windows XP, 7, 8, 10 || 32/64bit
-- Active Internet connection to start the program
+- working Internet connection to start the program
 
 :camera: **Pictures / Media**
 
