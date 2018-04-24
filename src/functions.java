@@ -30,80 +30,7 @@ public class functions {
 		String xml_1 = "activity_act_checklist_";
 		String xml_full = new StringBuilder(xml_1).append(planename_id+".xml").toString();
 		xml_fullname = xml_full;
-		String data = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n" + 
-				"<!--\r\n" + 
-				"##########################################################################################################\r\n" + 
-				"\r\n" +
-				"\t\tTHIS CHECKLIST WAS CREATED WITH XPCHECKLIST - CHECKLIST CREATOR CREATED BY AKEGO\r\n" +
-				"\r\n" +
-				"DO NOT CHANGE ANYTHING BEFORE AND BEHIND THIS !!! The changable part of this file can be found at Line 62!\r\n" + 
-				"\r\n" + 
-				"##########################################################################################################\r\n" + 
-				"-->\r\n" + 
-				"<ScrollView xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n" + 
-				"    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n" + 
-				"    xmlns:tools=\"http://schemas.android.com/tools\"\r\n" + 
-				"    android:layout_width=\"match_parent\"\r\n" + 
-				"    android:layout_height=\"match_parent\">\r\n" + 
-				"    <LinearLayout\r\n" + 
-				"		android:id=\"@+id/ll_checklist_main\"\r\n" + 
-				"        android:layout_width=\"match_parent\"\r\n" + 
-				"        android:layout_height=\"wrap_content\"\r\n" + 
-				"        android:orientation=\"vertical\">\r\n" + 
-				"        <LinearLayout\r\n" + 
-				"            android:id=\"@+id/ll_checklist_horizontal\"\r\n" + 
-				"            android:layout_width=\"match_parent\"\r\n" + 
-				"            android:layout_height=\"wrap_content\"\r\n" + 
-				"            android:orientation=\"horizontal\">\r\n" + 
-				"            <ImageView\r\n" + 
-				"                android:id=\"@+id/iv_checklist_info_plane\"\r\n" + 
-				"                android:layout_width=\"wrap_content\"\r\n" + 
-				"                android:layout_height=\"50dp\"\r\n" + 
-				"                android:layout_weight=\"1\"\r\n" + 
-				"                android:adjustViewBounds=\"true\"\r\n" + 
-				"                android:contentDescription=\"@string/text_empty\"\r\n" + 
-				"                android:cropToPadding=\"true\"\r\n" + 
-				"                android:padding=\"5dp\"\r\n" + 
-				"                app:srcCompat=\"@drawable/info\" />\r\n" + 
-				"            <ImageView\r\n" + 
-				"                android:id=\"@+id/iv_checklist_reset\"\r\n" + 
-				"                android:layout_width=\"wrap_content\"\r\n" + 
-				"                android:layout_height=\"50dp\"\r\n" + 
-				"                android:layout_weight=\"1\"\r\n" + 
-				"                android:adjustViewBounds=\"true\"\r\n" + 
-				"                android:contentDescription=\"@string/text_empty\"\r\n" + 
-				"                android:cropToPadding=\"true\"\r\n" + 
-				"                android:padding=\"5dp\"\r\n" + 
-				"                app:srcCompat=\"@drawable/reset\" />\r\n" + 
-				"        </LinearLayout>\r\n" + 
-				"        <TextView\r\n" + 
-				"            android:id=\"@+id/tv_line_checkl1\"\r\n" + 
-				"            android:layout_width=\"match_parent\"\r\n" + 
-				"            android:layout_height=\"5dp\"\r\n" + 
-				"            android:background=\"@color/colorPrimary\" />\r\n" + 
-				"        <Space\r\n" + 
-				"            android:layout_width=\"match_parent\"\r\n" + 
-				"            android:layout_height=\"15dp\" />   \r\n" + 
-				"	<!-- \r\n" + 
-				"	######################\r\n" + 
-				"	\r\n" + 
-				"	BEGIN OF CHECKBOXES !!\r\n" + 
-				"		Editing allowed\r\n" + 
-				"	\r\n" + 
-				"	######################\r\n" + 
-				"	-->\r\n"+
-				"		<TextView\r\n" + 
-				"            android:text=\""+planename+"\"\r\n" + 
-				"            android:layout_width=\"match_parent\"\r\n" + 
-				"            android:layout_height=\"wrap_content\"\r\n" + 
-				"            android:textAlignment=\"center\"\r\n" + 
-				"            android:textSize=\"20dp\"\r\n" + 
-				"            android:textStyle=\"bold\"\r\n" + 
-				"            android:id=\"@+id/"+planename_id+"_titel"+"\" />\r\n" + 
-				"\r\n" + 
-				"        <Space\r\n" + 
-				"            android:layout_width=\"match_parent\"\r\n" + 
-				"            android:layout_height=\"20dp\" />\r\n\r\n";
+		String data = "## FIRST LINES OF CHECKLIST ##";
         FileOutputStream out = new FileOutputStream(xml_full);
         out.write(data.getBytes());
         out.close();
@@ -113,20 +40,7 @@ public class functions {
 	public void createProcedures(String partname) {
 		String id = new StringBuilder(_planename+"_").append(partname).toString();
 		String procedures_id = id.replaceAll("\\s", "_"); //replace all whitespaces with underline minus
-		String data = "		<Space\r\n" +
-				" 			 android:layout_width=\"match_parent\"\r\n" +
-				" 			 android:layout_height=\"20dp\" />\r\n" +
-				"\r\n" + 
-				"		<TextView\r\n" + 
-				"            android:layout_width=\"match_parent\"\r\n" + 
-				"            android:layout_height=\"wrap_content\"\r\n" + 
-				"            android:id=\"@+id/"+procedures_id+"\"\r\n" + 
-				"            android:textAlignment=\"center\"\r\n" + 
-				"            android:text=\""+partname+"\" />\r\n" + 
-				"\r\n" + 
-				"        <Space\r\n" + 
-				"            android:layout_width=\"match_parent\"\r\n" + 
-				"            android:layout_height=\"20dp\" />\r\n\r\n";
+		String data = "## PROCEDURE PARTS OF CHECKLIST ##";
 		//write content into file (append file)
 		try {
 		    Files.write(Paths.get(xml_fullname), data.getBytes(), StandardOpenOption.APPEND);
@@ -137,13 +51,7 @@ public class functions {
 	
 	public void createCheckbox(String checkboxname, int checkboxnr) {
 		String checkbox_planename = _planename.replaceAll("\\s", "_");
-		String data_checkbox = "		<CheckBox\r\n" + 
-				"            android:id=\"@+id/"+checkbox_planename+"_checkbox_"+checkboxnr+"\"\r\n" + 
-				"            android:layout_width=\"match_parent\"\r\n" + 
-				"            android:layout_height=\"50dp\"\r\n" + 
-				"            android:checked=\"false\"\r\n" + 
-				"            android:text=\""+checkboxname+"\" />\r\n" + 
-				"\r\n";
+		String data_checkbox = "## SINGLE CHECKBOX FOR PROCEDURE ##";
 		//write content into file (append file)
 		try {
 		    Files.write(Paths.get(xml_fullname), data_checkbox.getBytes(), StandardOpenOption.APPEND);
@@ -153,15 +61,7 @@ public class functions {
 	}
 	
 	public void createFile_endcontent () {
-		String data_end = "<!-- \r\n" + 
-				"	###########\r\n" + 
-				"	\r\n" + 
-				"	Editing END\r\n" + 
-				"	\r\n" + 
-				"	###########\r\n" + 
-				"	-->\r\n" + 
-				"	</LinearLayout>\r\n" + 
-				"</ScrollView>";
+		String data_end = "## ENDING LINES OF CHECKLIST ##";
 		//write content into file (append file)
 		try {
 		    Files.write(Paths.get(xml_fullname), data_end.getBytes(), StandardOpenOption.APPEND);
@@ -179,13 +79,7 @@ public class functions {
 	
 	public void createEndOverview() throws IOException {
 		String loglocation = "checklist_log.txt";
-		String data_overview = ""
-				+ "####################################"
-				+ "\r\n"
-				+ " End Overview of created Checklist"
-				+ "\r\n"
-				+ "####################################"
-				+ "\r\n\r\n";
+		String data_overview = "## ENDING OF CHECKLIST ##";
 		FileOutputStream out = new FileOutputStream(loglocation);
         out.write(data_overview.getBytes());
         out.close();
@@ -218,7 +112,7 @@ public class functions {
 		String url = "";
 		URI mailTo;  
 		try {  
-		url = "mailTo:deskygp@gmail.com" + "?subject=" + "[NewChecklist]%20XPChecklistCreator";  
+		url = "mailTo:email@email.email" + "?subject=" + "[NewChecklist]%20XPChecklistCreator";  
 		mailTo = new URI(url);  
 		desktop.mail(mailTo);  
 		} catch (URISyntaxException e) {  
