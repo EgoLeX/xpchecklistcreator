@@ -20,7 +20,7 @@ public class functions {
 
 	String _planename;
 	String xml_fullname;
-	static String xpcc_current_version = "1.0";  //important for update checker
+	static String xpcc_current_version = "1.1";  //important for update checker
 	
 	public String createFile_startcontent(String planename) throws IOException {
 		_planename = planename;
