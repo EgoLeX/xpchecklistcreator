@@ -36,8 +36,7 @@ public class mainwindow extends Application {
 	HBox maincont = new HBox();
 	VBox maincont_vert = new VBox();
 	VBox f_footer = new VBox();
-	String filename;
-	String versioninfo;
+	String filename, versioninfo
 	Tooltip totip_field = new Tooltip();
 	Button btn_create;
 	Button btn_finish = new Button();
@@ -124,10 +123,15 @@ public class mainwindow extends Application {
 	    planename_field.setStyle("-fx-focus-color: transparent; -fx-faint-focus-color: transparent;");
 	    planename_field.setPromptText("Enter Aircraft Name here (e.g. Airbus A320)");
 	    planename_field.setFocusTraversable(false);
+		
+	    providedby_field.setStyle("-fx-focus-color: transparent; -fx-faint-focus-color: transparent;");
+	    providedby_field.setPromptText("Enter your Nickname here!");
+	    providedby_field.setFocusTraversable(false);
 	    
 	    maincont_vert.setSpacing(10);
 	    maincont_vert.setAlignment(Pos.CENTER);
 	    maincont_vert.getChildren().add(planename_field);
+	    maincont_vert.getChildren().add(providedby_field);
 	    maincont_vert.getChildren().add(btn_create);
 	    
 	    maincont.setAlignment(Pos.CENTER_LEFT);
@@ -215,7 +219,7 @@ public class mainwindow extends Application {
 	    primaryStage.show();
 	}
 	
-	public void window_create_procedures() {   // ÜBERARBEITEN !!!
+	public void window_create_procedures() {   // ÃœBERARBEITEN !!!
 		btn_finish.setText("Finish Checklist");
 		btn_finish.setStyle("-fx-background-color: #2271a9; -fx-font-family: sanf-serif; -fx-font-weight: bold;");
 		btn_finish.setAlignment(Pos.CENTER);
@@ -360,6 +364,20 @@ public class mainwindow extends Application {
 		endwindow.setResizable(false);
 		endwindow.setScene(scene);
 		endwindow.show();
+	}
+	
+	//Bad word filter : 
+	
+	public static List<Object> badWords = new ArrayList<>();
+	    static {
+		badWords.add("admin");
+		badWords.add("developer");
+		badWords.add("akego");
+		badWords.add("publisher");
+	    }
+
+	public static boolean isBadWord(String word){
+		return badWords.contains(word.toLowerCase());
 	}
 
 }
