@@ -46,6 +46,7 @@ public class mainwindow extends Application {
 	Image twitter_icon = new Image(mainwindow.class.getResourceAsStream("/img/twittericon.png"));
 	Image img_logo = new Image(mainwindow.class.getResourceAsStream("/img/plane_mainmenu.png"));
 	functions f_class = new functions();
+	ChoiceBox<String> choiceplanegame;
 	Stage mainstage;
 	int checkboxnr = 0;
 	
@@ -119,6 +120,13 @@ public class mainwindow extends Application {
 	    btn_create.setMinSize(230, 40);
 	    btn_create.setTextFill(Color.WHITE);
 	    
+	    choiceplanegame = new ChoiceBox<>();
+	    choiceplanegame.setPrefWidth(235);
+	    choiceplanegame.setStyle("-fx-focus-color: transparent; -fx-faint-focus-color: transparent;");
+	    choiceplanegame.getItems().add("XPlane 10/11");
+	    choiceplanegame.getItems().add("DCS World");
+	    choiceplanegame.setValue("XPlane 10/11");
+		
 	    planename_field.setTooltip(totip_field); 
 	    planename_field.setStyle("-fx-focus-color: transparent; -fx-faint-focus-color: transparent;");
 	    planename_field.setPromptText("Enter Aircraft Name here (e.g. Airbus A320)");
@@ -293,7 +301,7 @@ public class mainwindow extends Application {
 					planename_field.setPromptText("Please enter a Checkbox for the Procedure !!!");
 				} else {
 					checkboxnr++;
-					f_class.createCheckbox(planename_field.getText(), checkboxnr);
+					f_class.createCheckbox(planename_field.getText().replace("&", "and"), checkboxnr);
 					f_class.endoverview("[Checklist Creator]: Checkbox "+planename_field.getText()+" was created"
 							+ "\r\n");
 					planename_field.clear();
@@ -379,5 +387,15 @@ public class mainwindow extends Application {
 	public static boolean isBadWord(String word){
 		return badWords.contains(word.toLowerCase());
 	}
+	
+	private void getChoice(ChoiceBox<String> choiceBox){
+		String temp = choiceBox.getValue();
+		if(temp.equals("XPlane 10/11")) {
+			temp = "xplane";
+		} else if(temp.equals("DCS World")) {
+			temp = "dcs";
+		}
+		game = temp;
+    	}
 
 }
