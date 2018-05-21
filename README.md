@@ -1,4 +1,4 @@
-# XPChecklist Checklist Creator || Version 1.0
+# XPChecklist Checklist Creator || Version 1.2
 
 > Created with :heart: in Germany :de:
 
