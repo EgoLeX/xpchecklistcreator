@@ -1,2 +1,2 @@
 # UpdateChecker is checking for the following version
-[version]1.2[/version]
+[version]1.2.1[/version]
