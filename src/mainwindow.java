@@ -189,10 +189,15 @@ public class mainwindow extends Application {
 			public void handle(ActionEvent arg0) {
 				if(planename_field.getText().equalsIgnoreCase("")) {
 					planename_field.setPromptText("Please Enter a Planename here !!!");
+				} else if(providedby_field.getText().equalsIgnoreCase("") || isBadWord(providedby_field.getText())) {
+					providedby_field.clear();
+					providedby_field.setPromptText("Please Enter your Nickname here !!!");
 				} else {
 					try {
+						getChoice(choiceplanegame);
 						//create File and get full data name back
-						filename = f_class.createFile_startcontent(planename_field.getText());
+						String provby = new StringBuilder("provided by ").append(providedby_field.getText()).toString();
+						filename = f_class.createFile_startcontent(planename_field.getText(), provby, game);
 						f_class.endoverview("[Checklist Creator]: Checklist "+planename_field.getText()+" was created"
 								+ "\r\n");
 						window_create_procedures();
