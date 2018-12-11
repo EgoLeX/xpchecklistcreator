@@ -8,13 +8,19 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.application.Application;
+//import javafx.beans.value.ChangeListener;
+//import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
@@ -36,17 +42,21 @@ public class mainwindow extends Application {
 	HBox maincont = new HBox();
 	VBox maincont_vert = new VBox();
 	VBox f_footer = new VBox();
-	String filename, versioninfo
+	String filename, versioninfo, game;
 	Tooltip totip_field = new Tooltip();
+	Tooltip totip_provby = new Tooltip();
 	Button btn_create;
 	Button btn_finish = new Button();
-	javafx.scene.control.TextField planename_field = new javafx.scene.control.TextField();;
+	javafx.scene.control.TextField planename_field = new javafx.scene.control.TextField();
+	javafx.scene.control.TextField providedby_field = new javafx.scene.control.TextField();
 	Image image_logo = new Image(mainwindow.class.getResourceAsStream("/img/logo_xpchecklist.png"));
 	Image help_icon = new Image(mainwindow.class.getResourceAsStream("/img/helpicon.png"));
 	Image twitter_icon = new Image(mainwindow.class.getResourceAsStream("/img/twittericon.png"));
-	Image img_logo = new Image(mainwindow.class.getResourceAsStream("/img/plane_mainmenu.png"));
-	functions f_class = new functions();
+	Image img_logo = new Image(mainwindow.class.getResourceAsStream("/img/bg.png"));
+	//Image img_logo_xp = new Image(mainwindow.class.getResourceAsStream("/img/bg_xp.png"));
+	//Image img_logo_dcs = new Image(mainwindow.class.getResourceAsStream("/img/bg_dcs.png"));
 	ChoiceBox<String> choiceplanegame;
+	functions f_class = new functions();
 	Stage mainstage;
 	int checkboxnr = 0;
 	
@@ -126,23 +136,31 @@ public class mainwindow extends Application {
 	    choiceplanegame.getItems().add("XPlane 10/11");
 	    choiceplanegame.getItems().add("DCS World");
 	    choiceplanegame.setValue("XPlane 10/11");
-		
+	    
 	    planename_field.setTooltip(totip_field); 
 	    planename_field.setStyle("-fx-focus-color: transparent; -fx-faint-focus-color: transparent;");
 	    planename_field.setPromptText("Enter Aircraft Name here (e.g. Airbus A320)");
 	    planename_field.setFocusTraversable(false);
-		
+	     
+	    totip_provby.setStyle("-fx-font-size: 12;");
+	    totip_provby.setText("Enter your Nickname here\n"
+	    		+ "\te.g. Flowi1234\n"
+	    		+ "(Names like Developer, Admin, AkEgo wont work!)");
+	    
 	    providedby_field.setStyle("-fx-focus-color: transparent; -fx-faint-focus-color: transparent;");
 	    providedby_field.setPromptText("Enter your Nickname here!");
 	    providedby_field.setFocusTraversable(false);
+	    providedby_field.setTooltip(totip_provby);
 	    
 	    maincont_vert.setSpacing(10);
 	    maincont_vert.setAlignment(Pos.CENTER);
+	    maincont_vert.getChildren().add(choiceplanegame);
 	    maincont_vert.getChildren().add(planename_field);
 	    maincont_vert.getChildren().add(providedby_field);
 	    maincont_vert.getChildren().add(btn_create);
 	    
 	    maincont.setAlignment(Pos.CENTER_LEFT);
+	    maincont.setSpacing(10);
 	    maincont.getChildren().add(iv_logo);
 	    maincont.getChildren().add(maincont_vert);
 		
@@ -155,7 +173,7 @@ public class mainwindow extends Application {
 	    h_footer.setAlignment(Pos.CENTER_LEFT);
 	    h_footer.setSpacing(150);
 	    
-	    Label lbl_1 = new Label("Created by AkEgo:SkyGPDE");
+	    Label lbl_1 = new Label("Created by AkEgo");
 	    lbl_1.setStyle("-fx-text-alignment: center; -fx-opacity: 0.44;");
 	    Label lbl_version = new Label(versioninfo);
 	    lbl_version.setStyle("-fx-text-alignment: center; -fx-opacity: 0.44;");
@@ -253,6 +271,8 @@ public class mainwindow extends Application {
 	    
 	    // ADD FINISH BUTTON TO GUI
 	    maincont_vert.getChildren().add(btn_finish);
+	    maincont_vert.getChildren().remove(providedby_field);
+	    maincont_vert.getChildren().remove(choiceplanegame);
 		
 		// ACTION FOR BUTTON
 		
@@ -382,25 +402,25 @@ public class mainwindow extends Application {
 	//Bad word filter : 
 	
 	public static List<Object> badWords = new ArrayList<>();
-	    static {
-		badWords.add("admin");
-		badWords.add("developer");
-		badWords.add("akego");
-		badWords.add("publisher");
-	    }
-
-	public static boolean isBadWord(String word){
-		return badWords.contains(word.toLowerCase());
-	}
-	
-	private void getChoice(ChoiceBox<String> choiceBox){
-		String temp = choiceBox.getValue();
-		if(temp.equals("XPlane 10/11")) {
-			temp = "xplane";
-		} else if(temp.equals("DCS World")) {
-			temp = "dcs";
-		}
-		game = temp;
-    	}
+    static {
+        badWords.add("admin");
+        badWords.add("developer");
+        badWords.add("akego");
+        badWords.add("publisher");
+    }
+    
+    public static boolean isBadWord(String word){
+        return badWords.contains(word.toLowerCase());
+    }
+    
+    private void getChoice(ChoiceBox<String> choiceBox){
+        String temp = choiceBox.getValue();
+        if(temp.equals("XPlane 10/11")) {
+        	temp = "xplane";
+        } else if(temp.equals("DCS World")) {
+        	temp = "dcs";
+        }
+        game = temp;
+    }
 
 }
