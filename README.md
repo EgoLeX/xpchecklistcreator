@@ -29,3 +29,6 @@ Checklist Creator for the Application XPChecklist. With this tool youre able to 
 :free: **Download Application XPChecklist**
 
 [XPChecklist for Android](https://play.google.com/store/apps/details?id=de.skygp.akego.xpchecklist)
+
+
+The source code is from the old version 1.2 (Java). The make the creation of checklist more user friendly i recoded the checklist creator in php. The source of this follows within the next days/weeks (depends on my time)
